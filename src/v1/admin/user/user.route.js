@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
-const UserModel = require("../user/user.model");
+const UserModel = require("./user.model");
 const getFilteredMongoDB = require("../../../util/mongo_db/mongoDB_Queries");
 const baseRoute = "users";
 const { logActivity } = require("../../../util/log");
 const bcrypt = require("bcrypt");
-const modelGroupUser = require("../user/group/group_user.model");
+const modelGroupUser = require("./group/group_user.model");
 const SessionModel = require("../session/session.model");
-
-
 
 const route = (prop) => {
   // **************** Declaration ****************
@@ -151,7 +149,7 @@ const route = (prop) => {
           error: err,
         });
       }
-    }
+    },
   );
 
   prop.app.get(
@@ -207,7 +205,7 @@ const route = (prop) => {
           error: err,
         });
       }
-    }
+    },
   );
 
   prop.app.get(
@@ -221,7 +219,7 @@ const route = (prop) => {
           req.query,
           UserModel,
           [],
-          [{ is_super_admin: false }]
+          [{ is_super_admin: false }],
         );
 
         const newData = result.data.map((row) => {
@@ -238,7 +236,7 @@ const route = (prop) => {
       } catch (err) {
         res.status(500).json({ success: false, message: err.message });
       }
-    }
+    },
   );
 
   prop.app.get(
@@ -267,7 +265,7 @@ const route = (prop) => {
           error: err.message || err,
         });
       }
-    }
+    },
   );
 
   prop.app.delete(
@@ -301,7 +299,7 @@ const route = (prop) => {
         // ───────────────────────────────────────────────
         // ✅ Remove empty fields (null or undefined)
         Object.keys(updateFields).forEach(
-          (key) => updateFields[key] == null && delete updateFields[key]
+          (key) => updateFields[key] == null && delete updateFields[key],
         );
 
         // ───────────────────────────────────────────────
@@ -321,7 +319,7 @@ const route = (prop) => {
           updateFields,
           {
             new: true,
-          }
+          },
         );
 
         if (!updatedUnit) {
@@ -354,7 +352,7 @@ const route = (prop) => {
             updatedUnit.firstname + " " + updatedUnit.lastname
           } បានលុប`,
           message: deletedText(
-            `${updatedUnit.firstname + " " + updatedUnit.lastname}`
+            `${updatedUnit.firstname + " " + updatedUnit.lastname}`,
           ),
         });
       } catch (err) {
@@ -364,7 +362,7 @@ const route = (prop) => {
           error: err,
         });
       }
-    }
+    },
   );
 
   prop.app.put(
@@ -398,7 +396,7 @@ const route = (prop) => {
         // ───────────────────────────────────────────────
         // ✅ Remove empty fields (null or undefined)
         Object.keys(updateFields).forEach(
-          (key) => updateFields[key] == null && delete updateFields[key]
+          (key) => updateFields[key] == null && delete updateFields[key],
         );
 
         // ───────────────────────────────────────────────
@@ -418,7 +416,7 @@ const route = (prop) => {
           updateFields,
           {
             new: true,
-          }
+          },
         );
 
         if (!updatedUnit) {
@@ -438,7 +436,7 @@ const route = (prop) => {
             updatedUnit.firstname + " " + updatedUnit.lastname
           } ត្រូវបានកែប្រែ!`,
           description: `គណនី: ${userEmail} បានកែប្រែព័ត៌មានដូចជា : ${JSON.stringify(
-            updateFields
+            updateFields,
           )}`,
           categoryTitle: logTitle,
           createdBy: userId,
@@ -451,7 +449,7 @@ const route = (prop) => {
           success: true,
           data: updatedUnit,
           message: updatedText(
-            updatedUnit.firstname + " " + updatedUnit.lastname
+            updatedUnit.firstname + " " + updatedUnit.lastname,
           ),
         });
       } catch (err) {
@@ -461,7 +459,7 @@ const route = (prop) => {
           error: err,
         });
       }
-    }
+    },
   );
 
   // Update password for admin
@@ -503,7 +501,7 @@ const route = (prop) => {
         // ───────────────────────────────────────────────
         // ✅ Remove empty fields (null or undefined)
         Object.keys(updateFields).forEach(
-          (key) => updateFields[key] == null && delete updateFields[key]
+          (key) => updateFields[key] == null && delete updateFields[key],
         );
 
         // ───────────────────────────────────────────────
@@ -523,7 +521,7 @@ const route = (prop) => {
           updateFields,
           {
             new: true,
-          }
+          },
         );
 
         if (!updatedData) {
@@ -558,7 +556,7 @@ const route = (prop) => {
           success: true,
           data: updatedData,
           message: updatedText(
-            updatedData.firstname + " " + updatedData.lastname
+            updatedData.firstname + " " + updatedData.lastname,
           ),
         });
       } catch (err) {
@@ -568,7 +566,7 @@ const route = (prop) => {
           error: err,
         });
       }
-    }
+    },
   );
 
   // This for only new client login need to add new password after reset password from add
@@ -606,7 +604,7 @@ const route = (prop) => {
         // ───────────────────────────────────────────────
         // ✅ Remove empty fields (null or undefined)
         Object.keys(updateFields).forEach(
-          (key) => updateFields[key] == null && delete updateFields[key]
+          (key) => updateFields[key] == null && delete updateFields[key],
         );
 
         // ───────────────────────────────────────────────
@@ -626,7 +624,7 @@ const route = (prop) => {
           updateFields,
           {
             new: true,
-          }
+          },
         );
 
         if (!updatedData) {
@@ -642,7 +640,7 @@ const route = (prop) => {
           success: true,
           data: updatedData,
           message: updatedText(
-            updatedData.firstname + " " + updatedData.lastname
+            updatedData.firstname + " " + updatedData.lastname,
           ),
         });
       } catch (err) {
@@ -652,7 +650,7 @@ const route = (prop) => {
           error: err,
         });
       }
-    }
+    },
   );
 };
 

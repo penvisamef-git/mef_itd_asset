@@ -1,7 +1,7 @@
 const { body, validationResult } = require("express-validator");
 const User = require("../v1/admin/user/user.model");
 const ActivityLog = require("../v1/admin/activity_log/activity_log.model");
-const helper = require("../util/helper");
+const helper = require("./helper");
 const UAParser = require("ua-parser-js");
 // Validation middleware
 const validateActivityLog = [

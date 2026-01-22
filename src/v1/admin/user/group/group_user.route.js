@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const UserModel = require("../../user/user.model");
+const UserModel = require("../user.model");
 const GroupUserModel = require("./group_user.model");
 const getFilteredMongoDB = require("../../../../util/mongo_db/mongoDB_Queries");
 const baseRoute = "group-user-permission";
@@ -117,7 +117,7 @@ const route = (prop) => {
           error: err,
         });
       }
-    }
+    },
   );
 
   prop.app.get(
@@ -159,7 +159,7 @@ const route = (prop) => {
           error: err,
         });
       }
-    }
+    },
   );
 
   prop.app.get(
@@ -173,14 +173,14 @@ const route = (prop) => {
           req.query,
           GroupUserModel,
           [],
-          []
+          [],
         );
 
         res.json({ success: true, ...result });
       } catch (err) {
         res.status(500).json({ success: false, message: err.message });
       }
-    }
+    },
   );
 
   prop.app.get(
@@ -203,7 +203,7 @@ const route = (prop) => {
           error: err.message || err,
         });
       }
-    }
+    },
   );
 
   prop.app.delete(
@@ -237,7 +237,7 @@ const route = (prop) => {
         // ───────────────────────────────────────────────
         // ✅ Remove empty fields (null or undefined)
         Object.keys(updateFields).forEach(
-          (key) => updateFields[key] == null && delete updateFields[key]
+          (key) => updateFields[key] == null && delete updateFields[key],
         );
 
         // ───────────────────────────────────────────────
@@ -257,7 +257,7 @@ const route = (prop) => {
           updateFields,
           {
             new: true,
-          }
+          },
         );
 
         if (!updatedUnit) {
@@ -294,7 +294,7 @@ const route = (prop) => {
           error: err,
         });
       }
-    }
+    },
   );
 
   prop.app.put(
@@ -328,7 +328,7 @@ const route = (prop) => {
         // ───────────────────────────────────────────────
         // ✅ Remove empty fields (null or undefined)
         Object.keys(updateFields).forEach(
-          (key) => updateFields[key] == null && delete updateFields[key]
+          (key) => updateFields[key] == null && delete updateFields[key],
         );
 
         // ───────────────────────────────────────────────
@@ -348,7 +348,7 @@ const route = (prop) => {
           updateFields,
           {
             new: true,
-          }
+          },
         );
 
         if (!updatedUnit) {
@@ -366,7 +366,7 @@ const route = (prop) => {
         await logActivity({
           title: `${document} ${updatedUnit.name} ត្រូវបានកែប្រែ!`,
           description: `គណនី: ${userEmail} បានកែប្រែព័ត៌មានដូចជា : ${JSON.stringify(
-            updateFields
+            updateFields,
           )}`,
           categoryTitle: logTitle,
           createdBy: userId,
@@ -387,7 +387,7 @@ const route = (prop) => {
           error: err,
         });
       }
-    }
+    },
   );
 };
 
