@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
     success: true,
   });
 });
-const PORT = process.env.PORT || 8888;
-app.listen(PORT, () => {
-  console.log(`Local: http://localhost:${PORT}`);
-});
+// const PORT = process.env.PORT || 8888;
+// app.listen(PORT, () => {
+//   console.log(`Local: http://localhost:${PORT}`);
+// });
