@@ -1,18 +1,16 @@
 const express = require("express");
-const rateLimit = require("express-rate-limit");
-const helmet = require("helmet");
-const cors = require("cors");
-const jwt = require("jsonwebtoken");
 
-// Create express app
+const cors = require("cors");
 const app = express();
 
-// Middlewares
 app.use(cors());
-app.use(express.json({ limit: "1kb" }));
-app.use(helmet());
+app.use(express.json());
 
-// Example route
+app.use(express.json({ limit: "1kb" }));
+app.use(express.json());
+
+//  ================= Connection =================
+
 app.get("/", (req, res) => {
   res.json({
     message: "✅ Server MrBlack is connected! Working as well!",
@@ -20,6 +18,7 @@ app.get("/", (req, res) => {
     success: true,
   });
 });
-
-// Export as Vercel serverless function
-module.exports = app;
+const PORT = process.env.PORT || 8888;
+app.listen(PORT, () => {
+  console.log(`Local: http://localhost:${PORT}`);
+});
